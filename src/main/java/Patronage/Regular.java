@@ -45,17 +45,12 @@ public class Regular implements Patronal {
             this.funds -= bill;
         }
 
-        public void addToOrder(Dish item, Kitchen kitchen) {
-            if (checkKitchenHasIngredients(kitchen) == true) {
+        public void addToOrder(Dish item) {
                 foodOrder.add(item);
-            }
-            else return;
+
         }
-        public void addToDrinkOrder(BarItem item, Bar bar) {
-            if (checkBarHasItem(bar) == false) {
+        public void addToDrinkOrder(BarItem item) {
                 drinkOrder.add(item);
-            }
-            else return;
         }
 
     public ArrayList<Dish> getFoodOrder() {

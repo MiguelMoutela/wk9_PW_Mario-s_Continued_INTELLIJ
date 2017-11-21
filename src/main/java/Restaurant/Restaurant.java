@@ -33,16 +33,16 @@ public class Restaurant {
     }
 
     public boolean checkFridgeHasIngredients (Patronal customer) {
-        boolean isEverythingStock = true;
+        boolean isEverythingInStock = true;
         ArrayList<Dish>order = customer.getFoodOrder();
         for (Dish dish : order) {
             for (Ingredient ingredient : dish.getListOfIngredients()) {
                 if (ingredient.getQuantity() == 0) {
-                    return !isEverythingStock;
+                    return !isEverythingInStock;
                 }
             }
         }
-        return isEverythingStock;
+        return isEverythingInStock;
     }
     public boolean checkBarHasIngredients (Patronal customer) {
         boolean isEverythingInStock = true;
