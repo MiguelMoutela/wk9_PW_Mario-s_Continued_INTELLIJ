@@ -17,5 +17,9 @@ public class Bar {
     public int checkAmount(BarItem barItem) {
             return barItem.getQuantity();
     }
-    public void decreaseQuantity(BarItem barItem, int amount) { barItem.getQuantity() -= amount; }
+    public void decreaseQuantity(BarItem barItem, int amount) {
+        int quantity = barItem.getQuantity();
+        quantity-= amount;
+        barItem.setQuantity(quantity);
+    }
 }

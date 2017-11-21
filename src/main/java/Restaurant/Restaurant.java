@@ -46,10 +46,12 @@ public class Restaurant {
         }
         return ingredientsThatComposeDishesToBeRemoved;
     }
+
     public void updateTheFoodStockAndTheMenu(Patronal customer, Menu menu) {
 
         ArrayList<Dish> order = customer.getFoodOrder();
         ArrayList<Ingredient> comparator = checkFridgeHasIngredients(customer);
+
         for (Dish dish : order) {
             for (Ingredient ingredient : dish.getListOfIngredients()) {
                 if (comparator.contains(ingredient) == true) {
@@ -61,20 +63,34 @@ public class Restaurant {
             }
         }
     }
-    public void updateTheBarStock(BarItem barItem, Customer customer) {
-        ArrayList<BarItem>order = customer.getDrinksOrder();
-        int amountInStock = bar.checkAmount(barItem);
-        int amountOrdered = barItem.getQuantity();
-        for (BarItem barItem : order)
 
-            if (amountInStock <= 1) {
-                menu.removeFromMenu(barItem);
-            }
-            else if (amountInStock < amountOrdered) {
-                break;
-            }
-            else if (amountInStock > amountOrdered) {
+    public void updateTheBarStock(Customer customer) {
+        ArrayList<BarItem>order = customer.getDrinksOrder();
+//        int amountInStock = bar.checkAmount(barItem);
+//        int amountOrdered = barItem.getQuantity();
+
+        for (BarItem item : order) {
+            int amountInStock = bar.checkAmount(item);
+            int amountOrdered = item.getQuantity();
+
+            if (amountInStock > amountOrdered) {
                 bar.decreaseQuantity(barItem, amountInStock - amountOrdered);
+
+                if (amountInStock - amountOrdered == 0) {
+                    menu.removeFromMenu(item);
+                }
             }
+        }
+
+//            if (amountInStock <= 1) {
+//                menu.removeFromMenu(barItem);
+//                bar.decreaseQuantity(barItem, amountInStock - amountOrdered);
+//            }
+//            else if (amountInStock < amountOrdered) {
+//                break;
+//            }
+//            else if (amountInStock > amountOrdered) {
+//                bar.decreaseQuantity(barItem, amountInStock - amountOrdered);
+//            }
     }
 }
