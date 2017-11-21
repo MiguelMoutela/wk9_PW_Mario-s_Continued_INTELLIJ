@@ -10,7 +10,6 @@ public class BarItem implements Sellable {
             this.price = price;
             this.quantity = quantity;
         }
-
         public float getPrice() {
             return this.price;
         }
