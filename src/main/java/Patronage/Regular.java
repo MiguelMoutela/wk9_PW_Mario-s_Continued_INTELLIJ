@@ -85,19 +85,11 @@ public class Regular implements Patronal {
         }
         return barHasItem;
     }
-    public ArrayList<String> getFoodOrderAsString() {
-        ArrayList<String>foodOrderAsString = new ArrayList<>();
-        for (Dish dish : foodOrder) {
-            foodOrderAsString.add(dish.getName());
-        }
-        return foodOrderAsString;
+    public ArrayList<Dish> getFoodOrder() {
+        return new ArrayList<>(foodOrder);
     }
 
-    public ArrayList<String> getDrinksOrderAsString() {
-        ArrayList<String>drinksOrderAsString = new ArrayList<>();
-        for (BarItem barItem : drinkOrder) {
-            drinksOrderAsString.add(barItem.getName());
-        }
-        return drinksOrderAsString;
+    public ArrayList<BarItem> getDrinksOrder() {
+        return new ArrayList<>(drinkOrder);
     }
 }

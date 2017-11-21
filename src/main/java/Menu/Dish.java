@@ -23,14 +23,9 @@ public class Dish implements Sellable {
             return this.price;
         }
 
-        public ArrayList<String> getListOfIngredients() {
-            ArrayList listOfIngredients = new ArrayList<>();
-            for (Ingredient itemInIngredientList : ingredientList) {
-                listOfIngredients.add(itemInIngredientList.getName());
-            }
-            return listOfIngredients;
-//        List<String> listOfIngredients = new ArrayList<>(ingredientList.toString());
-//        return listOfIngredients;
+        public ArrayList<Ingredient> getListOfIngredients() {
+            return new ArrayList<>(ingredientList);
         }
+
 }
 
