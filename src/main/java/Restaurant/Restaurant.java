@@ -2,13 +2,11 @@ package Restaurant;
 
 import Menu.Menu;
 import Kitchen.Kitchen;
-import Bar.Bar;
 import Patronage.Patronal;
 import Menu.Dish;
 import Kitchen.Ingredient;
-import Menu.BarItem;
+import Bar.BarItem;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Restaurant {

@@ -1,9 +1,6 @@
 package Patronage;
 
-import Bar.Bar;
-import Kitchen.Kitchen;
-import Patronage.Patronal;
-import Menu.BarItem;
+import Bar.BarItem;
 import Menu.Dish;
 
 import java.util.ArrayList;

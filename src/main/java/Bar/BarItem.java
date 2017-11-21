@@ -1,4 +1,6 @@
-package Menu;
+package Bar;
+
+import Menu.Sellable;
 
 public class BarItem implements Sellable {
         private String name;
