@@ -66,9 +66,6 @@ public class Restaurant {
 
     public void updateTheBarStock(Customer customer) {
         ArrayList<BarItem>order = customer.getDrinksOrder();
-//        int amountInStock = bar.checkAmount(barItem);
-//        int amountOrdered = barItem.getQuantity();
-
         for (BarItem item : order) {
             int amountInStock = bar.checkAmount(item);
             int amountOrdered = item.getQuantity();
@@ -81,16 +78,5 @@ public class Restaurant {
                 }
             }
         }
-
-//            if (amountInStock <= 1) {
-//                menu.removeFromMenu(barItem);
-//                bar.decreaseQuantity(barItem, amountInStock - amountOrdered);
-//            }
-//            else if (amountInStock < amountOrdered) {
-//                break;
-//            }
-//            else if (amountInStock > amountOrdered) {
-//                bar.decreaseQuantity(barItem, amountInStock - amountOrdered);
-//            }
     }
 }
