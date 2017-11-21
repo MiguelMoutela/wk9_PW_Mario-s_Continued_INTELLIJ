@@ -58,33 +58,6 @@ public class Regular implements Patronal {
             else return;
         }
 
-    public boolean checkKitchenHasIngredients(Kitchen kitchen) {
-        boolean KitchenHasIngredients = false;
-        int howManyIngredientsKitchenHas = 0;
-
-        for (Dish item : foodOrder) {
-            ArrayList<String>listOfIngredients = item.getListOfIngredients();
-            for (String ingredientName : listOfIngredients) {
-                if (kitchen.checkAmount(ingredientName) != 0) {
-                    howManyIngredientsKitchenHas ++;
-                }
-            }
-            if (howManyIngredientsKitchenHas == listOfIngredients.size()) {
-                KitchenHasIngredients = true;
-            }
-        }
-        return KitchenHasIngredients;
-    }
-
-    public boolean checkBarHasItem(Bar bar) {
-        boolean barHasItem = false;
-        for (BarItem item : drinkOrder) {
-            if (bar.checkAmount(item.getName()) != 0) {
-                barHasItem = true;
-            }
-        }
-        return barHasItem;
-    }
     public ArrayList<Dish> getFoodOrder() {
         return new ArrayList<>(foodOrder);
     }
