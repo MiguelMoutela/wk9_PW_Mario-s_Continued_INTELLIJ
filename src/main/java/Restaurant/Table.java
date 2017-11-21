@@ -18,7 +18,7 @@ public class Table {
             }
             return tableTotal;
         }
-        public void goDutch() {
+        public void splitBill() {
             int partySize = howBigIsTheParty();
             float amount = (getTableTotal() / partySize);
             for (Patronal person : table) {

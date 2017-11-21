@@ -35,12 +35,12 @@ public class Customer implements Patronal {
             this.funds = funds;
         }
 
-        public void addToOrder(Dish item) {
+        public void addToFoodOrder(Dish item) {
                 foodOrder.add(item);
         }
 
         public void addToDrinkOrder(BarItem item) {
-                drinkOrder.add(item);
+            this.drinkOrder.add(item);
         }
 
         public void payBill(float bill) {

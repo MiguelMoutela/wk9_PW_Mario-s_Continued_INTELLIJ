@@ -3,12 +3,10 @@ package Bar;
 import Menu.Sellable;
 
 public class BarItem implements Sellable {
-        private String name;
         private float price;
         private int quantity;
 
-        public BarItem(String name, float price, int quantity) {
-            this.name = name.toLowerCase();
+        public BarItem(float price, int quantity) {
             this.price = price;
             this.quantity = quantity;
         }
@@ -16,9 +14,9 @@ public class BarItem implements Sellable {
             return this.price;
         }
 
-        public String getName() {
-            return this.name;
-        }
-
         public int getQuantity() { return this.quantity; }
+
+        public int setQuantity() { return this.quantity; }
+
+//        public void decreaseQuantity(int amount) { this.quantity -= amount; }
 }

@@ -5,22 +5,16 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 public class BarItemTest {
-    BarItem barItem;
+    BarItem coke;
 
     @Before
     public void before() {
-        barItem = new BarItem("thatDrink", 5,6);
+        coke = new BarItem(5,1);
     }
-
-    @Test
-    public void canGetNameToLowerCase() {
-        assertEquals("thatdrink", barItem.getName());
-    }
-
     @Test
     public void canGetPrice() {
-        assertEquals(5, barItem.getPrice(), 0.01);
+        assertEquals(5, coke.getPrice(), 0.01);
     }
     @Test
-    public void canGetQuantity() {assertEquals(6,barItem.getQuantity());}
+    public void canGetQuantity() {assertEquals(6,coke.getQuantity());}
 }
