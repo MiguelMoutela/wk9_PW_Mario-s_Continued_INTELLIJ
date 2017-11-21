@@ -8,12 +8,9 @@ import Bar.Bar;
 
 import java.util.ArrayList;
 
-import static com.sun.tools.doclets.formats.html.markup.HtmlStyle.bar;
-
-
 public class Customer implements Patronal {
         private ArrayList<Dish> foodOrder;
-        private ArrayList<BarItem>drinkOrder;
+        private ArrayList<BarItem> drinkOrder;
         private float funds;
 
         public Customer() {
@@ -60,6 +57,5 @@ public class Customer implements Patronal {
         public ArrayList<BarItem> getDrinksOrder() {
             return new ArrayList<>(drinkOrder);
         }
-
 }
 
