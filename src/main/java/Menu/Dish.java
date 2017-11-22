@@ -30,6 +30,9 @@ public class Dish implements Sellable {
         public void addIngredientToDish(Ingredient ingredient) {
             ingredientList.add(ingredient);
         }
+
+        public void RemoveIngredientFromDish(Ingredient ingredient) {ingredientList.remove(ingredient);}
+
         public int getSizeOfIngredientList() {
             return ingredientList.size();
         }
