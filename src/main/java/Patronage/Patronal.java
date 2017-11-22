@@ -10,4 +10,5 @@ public interface Patronal {
     public void payBill(float amount);
     public ArrayList<Dish> getFoodOrder();
     public ArrayList<BarItem> getDrinksOrder();
+    public boolean checkCustomerCanPay(float bill);
 }

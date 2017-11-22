@@ -18,5 +18,5 @@ public class BarItem implements Sellable {
 
         public void setQuantity(int quantity) { this.quantity = quantity; }
 
-//        public void decreaseQuantity(int amount) { this.quantity -= amount; }
+        public void decreaseQuantity(int amount) { this.quantity -= amount; }
 }

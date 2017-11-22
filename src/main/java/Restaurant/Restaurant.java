@@ -36,29 +36,34 @@ public class Restaurant {
 
     public ArrayList<Ingredient> checkFridgeHasIngredients (Patronal customer) {
         ArrayList<Ingredient>ingredientsThatComposeDishesToBeRemoved = new ArrayList<Ingredient>();
+        ArrayList<Ingredient>copyOfPantry = kitchen.getCopyOfPantry();
         ArrayList<Dish>order = customer.getFoodOrder();
         for (Dish dish : order) {
             for (Ingredient ingredient : dish.getListOfIngredients()) {
-                if (ingredient.getQuantity() == 1) {
-                    ingredientsThatComposeDishesToBeRemoved.add(ingredient);
+                for (Ingredient itemInStock : copyOfPantry) {
+                    if (ingredient.getName().equals(itemInStock.getName())) {
+                        if (ingredient.getQuantity() < itemInStock.getQuantity()) {
+                            itemInStock.reduceQuantity(ingredient.getQuantity());
+                        }
+                        else ingredientsThatComposeDishesToBeRemoved.add(ingredient);
+                    }
+                    return null;
                 }
             }
         }
         return ingredientsThatComposeDishesToBeRemoved;
     }
 
+
     public void updateTheFoodStockAndTheMenu(Patronal customer, Menu menu) {
 
         ArrayList<Dish> order = customer.getFoodOrder();
-        ArrayList<Ingredient> comparator = checkFridgeHasIngredients(customer);
+        ArrayList<Ingredient> compirator = checkFridgeHasIngredients(customer);
 
         for (Dish dish : order) {
             for (Ingredient ingredient : dish.getListOfIngredients()) {
-                if (comparator.contains(ingredient) == true) {
+                if (compirator.contains(ingredient) == true) {
                     menu.removeFromMenu(dish);
-                }
-                else {
-                    ingredient.setQuantity(ingredient.getQuantity() - 1);
                 }
             }
         }
@@ -72,11 +77,22 @@ public class Restaurant {
 
             if (amountInStock > amountOrdered) {
                 bar.decreaseQuantity(barItem, amountInStock - amountOrdered);
-
-                if (amountInStock - amountOrdered == 0) {
-                    menu.removeFromMenu(item);
-                }
+            }
+            else {
+                bar.decreaseQuantity(barItem, amountInStock);
+                customer.amendDrinkOrder(barItem, amountInStock);
+            }
+            if (amountInStock - amountOrdered == 0) {
+                menu.removeFromMenu(item);
             }
         }
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public float getTurnover() {
+        return this.turnover;
     }
 }

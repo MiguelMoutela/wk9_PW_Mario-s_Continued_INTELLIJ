@@ -18,12 +18,25 @@ public class Table {
             }
             return tableTotal;
         }
-        public void splitBill() {
+        public boolean payIndividually() {
+            for (Patronal person : table) {
+                if(person.checkCustomerCanPay(person.getBill())) {
+                    person.payBill(person.getBill());
+                }
+                else return false;
+            }
+            return true;
+        }
+        public boolean splitBill() {
             int partySize = howBigIsTheParty();
             float amount = (getTableTotal() / partySize);
             for (Patronal person : table) {
-                person.payBill(amount);
+                if (person.checkCustomerCanPay(amount)) {
+                    person.payBill(amount);
+                }
+                else return false;
             }
+            return true;
         }
         public int howBigIsTheParty() {
             int partyCounter = 0;

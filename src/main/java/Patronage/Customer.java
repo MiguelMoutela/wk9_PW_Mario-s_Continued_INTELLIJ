@@ -44,15 +44,38 @@ public class Customer implements Patronal {
         }
 
         public void payBill(float bill) {
-            this.funds -= bill;
+            if (checkCustomerCanPay(bill)) {
+                this.funds -= bill;
+            }
+        }
+
+        public boolean checkCustomerCanPay(float bill) {
+            boolean customerCanPay = true;
+            if (this.funds < bill) {
+                return !customerCanPay;
+            }
+            return customerCanPay;
         }
 
         public ArrayList<Dish> getFoodOrder() {
             return new ArrayList<>(foodOrder);
         }
 
+        public int getFoodOrderSize() {return this.foodOrder.size();}
+
         public ArrayList<BarItem> getDrinksOrder() {
             return new ArrayList<>(drinkOrder);
+        }
+
+        public int getDrinkOrderSize() {return this.drinkOrder.size();}
+
+
+        public void amendDrinkOrder(BarItem drinkOrdered, int amount) {
+            for (BarItem barItem : drinkOrder) {
+                if (barItem == drinkOrdered) {
+                    barItem.setQuantity(amount);
+                }
+            }
         }
 }
 

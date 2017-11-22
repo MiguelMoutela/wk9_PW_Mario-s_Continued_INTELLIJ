@@ -8,15 +8,21 @@ public class Bar {
     public Bar() {
         this.stockList = new ArrayList<BarItem>();
     }
+
+    public int getSize() { return stockList.size();}
+
     public void addToBar(BarItem barItem) {
         stockList.add(barItem);
     }
+
     public void takeFromBar(BarItem barItem) {
         stockList.remove(barItem);
     }
+
     public int checkAmount(BarItem barItem) {
             return barItem.getQuantity();
     }
+
     public void decreaseQuantity(BarItem barItem, int amount) {
         int quantity = barItem.getQuantity();
         quantity-= amount;

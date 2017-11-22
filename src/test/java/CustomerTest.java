@@ -5,6 +5,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 public class CustomerTest {
     Customer customer;
@@ -35,5 +37,19 @@ public class CustomerTest {
         customer.setFunds(100);
         customer.payBill(customer.getBill());
         assertEquals(90, customer.getFunds(),0.01);
+    }
+    @Test
+    public void canGetFoodOrder(){
+        assertEquals(0,customer.getFoodOrderSize());
+        assertEquals(0,customer.getDrinkOrderSize());
+        customer.addToFoodOrder(dish);
+        customer.addToDrinkOrder(barItem);
+
+    }
+    @Test
+    public void canGetToDrinkOrder(){
+        assertEquals(0,customer.getDrinkOrderSize());
+        customer.addToDrinkOrder(barItem);
+        assertNotNull(customer.getDrinksOrder());
     }
 }

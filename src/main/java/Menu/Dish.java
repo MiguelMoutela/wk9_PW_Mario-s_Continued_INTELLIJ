@@ -27,5 +27,12 @@ public class Dish implements Sellable {
             return new ArrayList<>(ingredientList);
         }
 
+        public void addIngredientToDish(Ingredient ingredient) {
+            ingredientList.add(ingredient);
+        }
+        public int getSizeOfIngredientList() {
+            return ingredientList.size();
+        }
+
 }
 

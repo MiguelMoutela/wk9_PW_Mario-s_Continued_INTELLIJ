@@ -38,11 +38,21 @@ public class Regular implements Patronal {
             return funds;
         }
 
-        public void payBill(float bill) {
+    public void payBill(float bill) {
+        if (checkCustomerCanPay(bill)) {
             this.funds -= bill;
         }
+    }
 
-        public void addToOrder(Dish item) {
+    public boolean checkCustomerCanPay(float bill) {
+        boolean customerCanPay = true;
+        if (this.funds < bill) {
+            return !customerCanPay;
+        }
+        return customerCanPay;
+    }
+
+        public void addToFoodOrder(Dish item) {
                 foodOrder.add(item);
 
         }
@@ -56,5 +66,13 @@ public class Regular implements Patronal {
 
     public ArrayList<BarItem> getDrinksOrder() {
         return new ArrayList<>(drinkOrder);
+    }
+
+    public void amendDrinkOrder(BarItem drinkOrdered, int amount) {
+        for (BarItem barItem : drinkOrder) {
+            if (barItem == drinkOrdered) {
+                barItem.setQuantity(amount);
+            }
+        }
     }
 }

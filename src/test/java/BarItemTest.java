@@ -16,5 +16,10 @@ public class BarItemTest {
         assertEquals(5, coke.getPrice(), 0.01);
     }
     @Test
-    public void canGetQuantity() {assertEquals(6,coke.getQuantity());}
+    public void canGetQuantity() {assertEquals(1,coke.getQuantity());}
+    @Test
+    public void canSetQuantity() {
+        coke.setQuantity(10);
+        assertEquals(10, coke.getQuantity());
+    }
 }
