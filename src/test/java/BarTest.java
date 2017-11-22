@@ -12,7 +12,7 @@ public class BarTest {
     @Before
     public void before() {
         bar = new Bar();
-        coke = new BarItem(1,10);
+        coke = new BarItem("derp",1,10);
     }
     @Test
     public void canAddToBarArray(){

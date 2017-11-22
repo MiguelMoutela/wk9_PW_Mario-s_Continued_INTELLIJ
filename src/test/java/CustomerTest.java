@@ -17,7 +17,7 @@ public class CustomerTest {
         customer = new Customer();
         dish = new Dish("a dish", 10);
         dish = new Dish("another dish", 10);
-        barItem = new BarItem(1,1);
+        barItem = new BarItem("baritem",1,1);
     }
     @Test
     public void canGetAndSetFunds() {
@@ -47,9 +47,9 @@ public class CustomerTest {
 
     }
     @Test
-    public void canGetToDrinkOrder(){
+    public void canGetDrinkOrder(){
         assertEquals(0,customer.getDrinkOrderSize());
         customer.addToDrinkOrder(barItem);
-        assertNotNull(customer.getDrinksOrder());
+        assertEquals(1, customer.getDrinksOrder().size());
     }
 }

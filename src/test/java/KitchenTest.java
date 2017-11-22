@@ -31,6 +31,6 @@ public class KitchenTest {
     public void canReturnACopyOfThePantry() {
         assertEquals(0, kitchen.getSize());
         kitchen.addObjectToStock(ingredient1);
-        assertEquals(1, kitchen.getSize());
+        assertEquals(1, kitchen.getCopyOfPantry().size());
     }
 }

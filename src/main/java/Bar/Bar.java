@@ -20,12 +20,25 @@ public class Bar {
     }
 
     public int checkAmount(BarItem barItem) {
-            return barItem.getQuantity();
+
+        for(BarItem item : stockList) {
+            if (item.getName().equals(barItem.getName())) {
+                return item.getQuantity();
+            }
+        }
+
+        return 0;
     }
 
     public void decreaseQuantity(BarItem barItem, int amount) {
-        int quantity = barItem.getQuantity();
-        quantity-= amount;
-        barItem.setQuantity(quantity);
+        for(BarItem item : stockList) {
+            if (item.getName().equals(barItem.getName())) {
+                item.decreaseQuantity(amount);
+                return;
+            }
+        }
+//        int quantity = barItem.getQuantity();
+//        quantity-= amount;
+//        barItem.setQuantity(quantity);
     }
 }

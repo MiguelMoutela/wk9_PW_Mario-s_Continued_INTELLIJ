@@ -9,7 +9,7 @@ public class BarItemTest {
 
     @Before
     public void before() {
-        coke = new BarItem(5,1);
+        coke = new BarItem("coke",5,1);
     }
     @Test
     public void canGetPrice() {

@@ -19,7 +19,7 @@ public class MenuTest {
     @Before
     public void before() {
         menu = new Menu();
-        coke = new BarItem(1,1);
+        coke = new BarItem("coke",1,1);
         cheeseToastie = new Dish("cheeseToastie", 5);
         cheese = new Ingredient("cheese", 1);
         bread = new Ingredient("bread", 2);

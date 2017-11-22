@@ -48,7 +48,7 @@ public class TableTest {
             customer.addToFoodOrder(dish);
             assertEquals(10,customer.getBill(),0.01);
             assertEquals(10, table.getTableTotal(),0.01);
-            table.addToTable(customer);
+            table.addToTable(customer2);
             customer.addToFoodOrder(dish);
             assertEquals(20, table.getTableTotal(),0.01);
         }
