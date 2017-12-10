@@ -1,4 +1,4 @@
-import Kitchen.Ingredient;
+import ServiceArea.Ingredient;
 import Menu.Dish;
 import org.junit.Before;
 import org.junit.Test;

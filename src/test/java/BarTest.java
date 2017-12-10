@@ -1,5 +1,5 @@
-import Bar.Bar;
-import Bar.BarItem;
+import ServiceArea.Bar;
+import Menu.BarItem;
 import org.junit.Before;
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-import Bar.BarItem;
+import Menu.BarItem;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -15,8 +15,10 @@ public class BarItemTest {
     public void canGetPrice() {
         assertEquals(5, coke.getPrice(), 0.01);
     }
+
     @Test
     public void canGetQuantity() {assertEquals(1,coke.getQuantity());}
+
     @Test
     public void canSetQuantity() {
         coke.setQuantity(10);

@@ -1,14 +1,14 @@
 package Patronage;
 
-import Bar.BarItem;
-import Menu.Dish;
+import Menu.Sellable;
 
 import java.util.ArrayList;
 
 public interface Patronal {
-    public float getBill();
-    public void payBill(float amount);
-    public ArrayList<Dish> getFoodOrder();
-    public ArrayList<BarItem> getDrinksOrder();
-    public boolean checkCustomerCanPay(float bill);
+    float getBill();
+    void payBill(float amount);
+    ArrayList<Sellable> getOrder();
+    boolean checkCustomerCanPay(float bill);
+//    void amendOrder(Sellable item, int amountInStock);
+
 }

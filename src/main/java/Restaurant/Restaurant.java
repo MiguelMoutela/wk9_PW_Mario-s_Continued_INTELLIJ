@@ -1,13 +1,11 @@
 package Restaurant;
 
 import Menu.Menu;
-import Kitchen.Kitchen;
-import Patronage.Customer;
+import ServiceArea.Kitchen;
 import Patronage.Patronal;
-import Menu.Dish;
-import Kitchen.Ingredient;
-import Bar.BarItem;
-import Bar.Bar;
+import Menu.Sellable;
+import ServiceArea.Ingredient;
+import ServiceArea.Bar;
 
 import java.util.ArrayList;
 
@@ -16,7 +14,7 @@ public class Restaurant {
     private float turnover;
     private Table[] tables;
     private Menu menu;
-//    private ArrayList<Storable> stores;
+    private ArrayList<Storable> stores;
     private Kitchen kitchen;
     private Bar bar;
 
@@ -25,68 +23,79 @@ public class Restaurant {
         this.turnover = 0;
         this.tables = new Table[5];
         this.menu = menu;
-//        this.stores = new ArrayList();
+        this.stores = new ArrayList();
         this.kitchen = kitchen;
         this.bar = bar;
     }
+
     public void addToTurnover(Table table) {
         turnover += table.getTableTotal();
     }
 
+    public ArrayList<Ingredient> getCopyOfStock(){
+        ArrayList<Ingredient> copyOfStock = new ArrayList<>();
+        for (Storable fridge : this.stores) {
+            copyOfStock.addAll(fridge.getCopyOfStock());
+        }
+        return copyOfStock;
+    }
+
     public ArrayList<Ingredient> checkFridgeHasIngredients(Patronal customer) {
-        ArrayList<Ingredient>ingredientsThatComposeDishesToBeRemoved = new ArrayList<Ingredient>();
-        ArrayList<Ingredient>copyOfPantry = kitchen.getCopyOfPantry();
-        ArrayList<Dish>order = customer.getFoodOrder();
-        for (Dish dish : order) {
-            for (Ingredient ingredient : dish.getListOfIngredients()) {
-                for (Ingredient itemInStock : copyOfPantry) {
-                    if (ingredient.getName().equals(itemInStock.getName())) {
-                        if (ingredient.getQuantity() <= itemInStock.getQuantity()) {
-                            itemInStock.reduceQuantity(ingredient.getQuantity());
-                        }
-                        else {
-                            ingredientsThatComposeDishesToBeRemoved.add(itemInStock);
+        ArrayList<Ingredient> ingredientsThatComposeMenuItemsToBeRemoved = new ArrayList<Ingredient>();
+        ArrayList<Ingredient> copyOfStock = getCopyOfStock();
+        ArrayList<Sellable> order = customer.getOrder();
+            for (Sellable item : order) {
+                for (Ingredient ingredient : item.getListOfIngredients()) {
+                    for (Ingredient itemInStock : copyOfStock) {
+                        if (ingredient.getName().equals(itemInStock.getName())) {
+                            if (ingredient.getQuantity() <= itemInStock.getQuantity()) {
+                                itemInStock.reduceQuantity(ingredient.getQuantity());
+                            } else {
+                                ingredientsThatComposeMenuItemsToBeRemoved.add(itemInStock);
+                            }
                         }
                     }
                 }
             }
-        }
-        return ingredientsThatComposeDishesToBeRemoved;
+        return ingredientsThatComposeMenuItemsToBeRemoved;
     }
 
 
-    public void updateTheFoodStockAndTheMenu(Patronal customer, Menu menu) {
+    public void updateTheMenu(Patronal customer, Menu menu) {
 
-        ArrayList<Dish> order = customer.getFoodOrder();
-        ArrayList<Ingredient> compirator = checkFridgeHasIngredients(customer);
+        ArrayList<Sellable> order = customer.getOrder();
+        ArrayList<Ingredient> comparator = checkFridgeHasIngredients(customer);
 
-        for (Dish dish : order) {
-            for (Ingredient ingredient : dish.getListOfIngredients()) {
-                if (compirator.contains(ingredient) == true) {
-                    menu.removeFromMenu(dish);
+            for (Sellable item : order) {
+                for (Ingredient ingredient : item.getListOfIngredients()) {
+                    if (comparator.contains(ingredient)) {
+                        menu.removeFromMenu(item);
+                    }
+                    else if (!comparator.contains(ingredient)) {
+                        updateTheStock(customer);
+                    }
+                }
+            }
+        }
+
+
+    public void updateTheStock(Patronal customer) {
+        ArrayList<Sellable> order = customer.getOrder();
+        for (Storable fridge : stores) {
+            for (Sellable menuItem : order) {
+                ArrayList<Ingredient> composition = new ArrayList<>(menuItem.getListOfIngredients());
+                for (Ingredient ingredient : composition) {
+                    int amountInStock = fridge.checkAmount(ingredient);
+                    int amountOrdered = ingredient.getQuantity();
+
+                    if (amountInStock >= amountOrdered) {
+                        fridge.decreaseQuantity(ingredient, amountOrdered);
+                    }
                 }
             }
         }
     }
 
-    public void updateTheBarStock(Customer customer) {
-        ArrayList<BarItem>order = customer.getDrinksOrder();
-        for (BarItem item : order) {
-            int amountInStock = bar.checkAmount(item);
-            int amountOrdered = item.getQuantity();
-
-            if (amountInStock >= amountOrdered) {
-                bar.decreaseQuantity(item, amountOrdered);
-            }
-            else {
-                bar.decreaseQuantity(item, amountInStock);
-                customer.amendDrinkOrder(item, amountInStock);
-            }
-            if (amountInStock - amountOrdered == 0) {
-                menu.removeFromMenu(item);
-            }
-        }
-    }
 
     public String getName() {
         return this.name;

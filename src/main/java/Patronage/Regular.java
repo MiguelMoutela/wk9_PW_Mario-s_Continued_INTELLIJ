@@ -1,30 +1,24 @@
 package Patronage;
 
-import Bar.BarItem;
-import Menu.Dish;
+import Menu.Sellable;
 
 import java.util.ArrayList;
 
 
 public class Regular implements Patronal {
-        private ArrayList<Dish> foodOrder;
-        private ArrayList<BarItem>drinkOrder;
+        private ArrayList<Sellable> order;
         private float funds;
         private float discount;
 
         public Regular() {
             this.funds = 0;
-            this.foodOrder = new ArrayList<>();
-            this.drinkOrder = new ArrayList<>();
+            this.order = new ArrayList<>();
             this.discount = 0.1f;
         }
 
         public float getBill() {
             float totalBill = 0;
-            for (Dish item : foodOrder) {
-                totalBill += (item.getPrice()*(1-this.discount)) ;
-            }
-            for (BarItem item : drinkOrder) {
+            for (Sellable item : order) {
                 totalBill += (item.getPrice()*(1-this.discount)) ;
             }
             return totalBill;
@@ -52,27 +46,17 @@ public class Regular implements Patronal {
         return customerCanPay;
     }
 
-        public void addToFoodOrder(Dish item) {
-                foodOrder.add(item);
+    public void addToOrder(Sellable item) { order.add(item); }
 
-        }
-        public void addToDrinkOrder(BarItem item) {
-                drinkOrder.add(item);
-        }
-
-    public ArrayList<Dish> getFoodOrder() {
-        return new ArrayList<>(foodOrder);
+    public ArrayList<Sellable> getOrder() {
+        return new ArrayList<>(order);
     }
 
-    public ArrayList<BarItem> getDrinksOrder() {
-        return new ArrayList<>(drinkOrder);
-    }
-
-    public void amendDrinkOrder(BarItem drinkOrdered, int amount) {
-        for (BarItem barItem : drinkOrder) {
-            if (barItem == drinkOrdered) {
-                barItem.setQuantity(amount);
-            }
-        }
-    }
+//    public void amendOrder(Sellable itemOrdered, int amount) {
+//        for (Sellable item : order) {
+//            if (item == itemOrdered) {
+//                item.setQuantity(amount);
+//            }
+//        }
+//    }
 }

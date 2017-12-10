@@ -1,8 +1,8 @@
 import org.junit.Before;
 import org.junit.Test;
 
-import Kitchen.Kitchen;
-import Kitchen.Ingredient;
+import ServiceArea.Kitchen;
+import ServiceArea.Ingredient;
 
 
 import static org.junit.Assert.assertEquals;

@@ -1,5 +1,5 @@
-import Bar.BarItem;
-import Kitchen.Ingredient;
+import Menu.BarItem;
+import ServiceArea.Ingredient;
 import Menu.Dish;
 import Menu.Menu;
 

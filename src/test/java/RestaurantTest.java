@@ -1,12 +1,12 @@
-import Bar.BarItem;
+import Menu.BarItem;
 import org.junit.Before;
 import org.junit.Test;
 import Restaurant.Restaurant;
 import Menu.Menu;
-import Kitchen.Kitchen;
-import Kitchen.Ingredient;
+import ServiceArea.Kitchen;
+import ServiceArea.Ingredient;
 import Patronage.Customer;
-import Bar.Bar;
+import ServiceArea.Bar;
 import Menu.Dish;
 
 

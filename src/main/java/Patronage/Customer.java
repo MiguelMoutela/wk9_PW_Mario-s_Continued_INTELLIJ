@@ -1,27 +1,21 @@
 package Patronage;
 
-import Bar.BarItem;
-import Menu.Dish;
+import Menu.Sellable;
 
 import java.util.ArrayList;
 
 public class Customer implements Patronal {
-        private ArrayList<Dish> foodOrder;
-        private ArrayList<BarItem> drinkOrder;
+        private ArrayList<Sellable> order;
         private float funds;
 
         public Customer() {
-            this.foodOrder = new ArrayList<>();
-            this.drinkOrder = new ArrayList<>();
+            this.order = new ArrayList<>();
             this.funds = funds;
         }
 
         public float getBill() {
             float totalBill = 0;
-            for (Dish item : foodOrder) {
-                totalBill += (item.getPrice()) ;
-            }
-            for (BarItem item : drinkOrder) {
+            for (Sellable item : order) {
                 totalBill += (item.getPrice()) ;
             }
             return totalBill;
@@ -35,12 +29,8 @@ public class Customer implements Patronal {
             this.funds = funds;
         }
 
-        public void addToFoodOrder(Dish item) {
-                foodOrder.add(item);
-        }
-
-        public void addToDrinkOrder(BarItem item) {
-            this.drinkOrder.add(item);
+        public void addToOrder(Sellable item) {
+                order.add(item);
         }
 
         public void payBill(float bill) {
@@ -57,25 +47,18 @@ public class Customer implements Patronal {
             return customerCanPay;
         }
 
-        public ArrayList<Dish> getFoodOrder() {
-            return new ArrayList<>(foodOrder);
+        public ArrayList<Sellable> getOrder() {
+            return new ArrayList<>(order);
         }
 
-        public int getFoodOrderSize() {return this.foodOrder.size();}
+        public int getOrderSize() {return this.order.size();}
 
-        public ArrayList<BarItem> getDrinksOrder() {
-            return new ArrayList<>(drinkOrder);
-        }
-
-        public int getDrinkOrderSize() {return this.drinkOrder.size();}
-
-
-        public void amendDrinkOrder(BarItem drinkOrdered, int amount) {
-            for (BarItem barItem : drinkOrder) {
-                if (barItem == drinkOrdered) {
-                    barItem.setQuantity(amount);
-                }
-            }
-        }
+//        public void amendOrder(Sellable itemOrdered, int amount) {
+//            for (Sellable item : order) {
+//                if (item == itemOrdered) {
+//                    item.setQuantity(amount);
+//                }
+//            }
+//        }
 }
 

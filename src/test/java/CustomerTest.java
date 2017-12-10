@@ -1,4 +1,4 @@
-import Bar.BarItem;
+import Menu.BarItem;
 import Menu.Dish;
 import Patronage.Customer;
 import org.junit.Before;

@@ -1,4 +1,4 @@
-package Kitchen;
+package ServiceArea;
 
 public class Ingredient {
     private String name;

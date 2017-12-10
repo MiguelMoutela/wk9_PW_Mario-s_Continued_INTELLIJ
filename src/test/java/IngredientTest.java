@@ -1,6 +1,6 @@
 import org.junit.Before;
 import org.junit.Test;
-import Kitchen.Ingredient;
+import ServiceArea.Ingredient;
 
 import static org.junit.Assert.assertEquals;
 
