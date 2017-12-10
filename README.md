@@ -1,11 +1,6 @@
 # wk9_ProjectWeek_Mario-s_INTELLIJ
 Native application developed in Java according to OOP design principles.
 
-Self-examination:
-
-- ArrayLists lend themselves to messy code and are harder test. There is another repo on this account that uses HashMaps for the same exercise.
-- The classes Bar and Kitchen were meant to be used as implementations of Storable. However, and this was the main take away from this project, the use interfaces should only be applicable for objects with similar composition i.e. if my logic is dependent on accessing a certain property inside all objects - those objects need to have a comparable structure. Hence, both the storable and sellable interfaces were not fully implemented.
-
 Mario's Italian Restaurant
 
 Mario is opening a new restaurant in Edinburgh and needs your help getting it organised.
@@ -26,3 +21,8 @@ Add a kitchen that gets ingredients delivered and has a pantry to keep them.
 Ingredients are removed when dishes are ordered (hint: customised dishes use different ingredients)
 When the kitchen runs out of an ingredient, all dishes using that ingredient have to be removed from the menu
 And/or anything else that you can think of...
+
+Self-examination:
+
+- ArrayLists lend themselves to messy code and are harder to test. There is another repo on this account that uses HashMaps for the same exercise.
+- The classes Bar and Kitchen were meant to be used as implementations of Storable. However, and this was the main take away from this project, the use interfaces should only be applicable for objects with similar composition i.e. if my logic is dependent on accessing a certain property inside all objects - those objects need to have a comparable structure. Hence, both the storable and sellable interfaces were not fully implemented in this version. I do have a version of this project that attempts to implements interfaces through out and fails - currently not compiling.
